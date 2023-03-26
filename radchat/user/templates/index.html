@@ -1,0 +1,223 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadChatAI</title>
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media='screen and (min-width: 900px)' href="{% static 'css/main.css' %}">
+    <link rel='stylesheet' media='screen and (max-width: 900px)' href="{% static 'css/main_mobile.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        .errorlist
+    {
+        color: #856404;
+        margin-bottom: 5px;
+        background-color: #fff3cd;
+        border:1px solid #e9daad;
+        border-radius: 7px;
+        padding: 7px;
+        width: 18.5vw;
+
+    }
+    </style>
+</head>
+<body>
+    <div id="header_wrapper">
+        <header id="header">
+            <div id="header_p1">
+                <div id="nav">
+                    <input type="checkbox" id="active">
+                    <label for="active" class="menu-btn"><span></span></label>
+                    <label for="active" class="close"></label>
+                    <div class="wrapper">
+                        <ul>
+                            <li><a href="{% url 'landing' %}"><img src="{% static 'img/logo.png' %}" alt="" id="landing_logo"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="header_p2">
+                {% if not request.user.is_authenticated %}
+                    <div id="dashboard" class="onHover">Get started</div>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'reports' %}"><div id="dashboard2" class="onHover">Dashboard</div></a>
+                {% endif %}
+            </div>
+        </header>
+    </div>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <section id="big_cont">
+        <div id="cont1">
+            <div id="title">understand complex<span > Radiology reports </span>with our AI assistant</div>
+            <div id="description">Our software analyzes the text of a standard radiology report, translates the medical terms into plain language,</div>
+            {% if not request.user.is_authenticated %}
+                <div id="btn" class="onHover">Get started</div>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'reports' %}"><div id="btn2" class="onHover">Dashboard</div></a>
+            {% endif %}
+            <div id="image"><img src="{% static 'img/landing.png' %}" alt=""></div>
+        </div>
+        <div id="cont2">
+            <div id="cont2_title">How it works ?</div>
+            <div id="cont2_p2">
+                <div class="step" id="step1">
+                    <div class="step_img">
+                        <img src="{% static 'img/step1.png' %}" alt="">
+                    </div>
+                    <div class="step_title">Upload your report</div>
+                    <div class="step_desc">Upload a picture of your reports from gallery or take one</div>
+                </div>
+                <div id="arrow1">
+                    <img src="{% static 'img/arrow1.png' %}" alt="">
+                </div>
+                <div class="step" id="step2">
+                    <div class="step_img">
+                        <img src="{% static 'img/step2.png' %}" alt="">
+                    </div>
+                    <div class="step_title">Wait 10 seconds</div>
+                    <div class="step_desc">Wait until our Ai finish analysing the report</div>
+                </div>
+                <div id="arrow2">
+                    <img src="{% static 'img/arrow2.png' %}" alt="">
+                </div>
+                <div class="step" id="step3">
+                    <div class="step_img">
+                        <img src="{% static 'img/step3.png' %}" alt="">
+                    </div>
+                    <div class="step_title">Ask your questions</div>
+                    <div class="step_desc">You can ask Our AI any question about your report</div>
+                </div>
+            </div>
+        </div>
+        <div id="cont3">
+            <div id="cont3_p1">
+                <img src="{% static 'img/mobile.png' %}" alt="">
+            </div>
+            <div id="cont3_p2">
+                <div id="cont3_title">Empowering Patients with<span> Knowledge. </span></div>
+                <div id="cont3_desc">Our simplified radiology reports give patients the knowledge they need to make informed decisions about their health.We make healthcare more accessible by breaking down language barriers and providing easy-to-understand radiology reports.</div>
+            </div>
+        </div>
+        <div id="cont4">
+            <div id="cont4_p1">
+                <div id="cont3_title" class="cont4_title"><span> Enhancing </span>Patient Satisfaction</div>
+                <div id="cont3_desc">We strive to enhance patient satisfaction by providing a user-friendly website and simplified radiology reports that empower patients.Our simplified radiology reports can help alleviate patient anxiety and stress by providing a clear understanding of their health.</div>
+                {% if not request.user.is_authenticated %}
+                    <div id="cont4_btn">Get started</div>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'reports' %}"><div id="cont4_btn2">Dashboard</div></a>
+                {% endif %}
+            </div>
+            <div id="cont4_p2">
+                <img src="{% static 'img/chat.png' %}" alt="">
+            </div>
+        </div>
+        <div id="cont5">
+            <div id="cont5_title">Meet the Core Team</div>
+            <div id="cont5_p2">
+                <div class="profil">
+                    <img src="{% static 'img/profil1.png' %}" alt="">
+                    <div class="name">Peter Shelton</div>
+                    <div class="position">Chief Executive Officer</div>
+                </div>
+                <div class="profil">
+                    <img src="{% static 'img/profil2.png' %}" alt="">
+                    <div class="name">Mohamed Triki</div>
+                    <div class="position">Chief Technology Officer</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-basic">
+            <footer>
+                <div class="social"><a href=""><i class="icon ion-social-linkedin"></i></a><a href=""><i class="icon ion-social-twitter"></i></a><a href=""><i class="icon ion-social-instagram"></i></a><a href=""><i class="icon ion-social-facebook"></i></a></div>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="">Home</a></li>
+                    <li class="list-inline-item"><a href="">Services</a></li>
+                    <li class="list-inline-item"><a href="">About</a></li>
+                    <li class="list-inline-item"><a href="">Terms</a></li>
+                    <li class="list-inline-item"><a href="">Privacy Policy</a></li>
+                </ul>
+                <p class="copyright">RadChatAI LTD © 2023</p>
+            </footer>
+        </div>
+    </section>
+    <div id="login_page">
+        <div id="login_cont">
+            <img src="{% static 'img/close.png' %}" alt="" id="close">
+            <div id="login_cont_p1">
+                <div id="login_cont_p1_1">
+                    <div id="login_title">Get started now</div>
+                    <div id="login_desc">Creat your account under 30 seconds</div>
+                </div>
+                <div id="login_cont_p1_2">
+                    <form action="" method="POST" id="signup_form" name='signup'>
+                        <!-- {% if messages %}
+                        {% for i in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{i}}
+                            </div>
+                            {% endfor %}
+                        {% endif %} -->
+                        {% csrf_token %}
+                        {{ form }}
+                        <!-- <label for="name">Name</label><br>
+                        <input type="text" id="name" name="username" value="" ><br><br>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" value="" ><br><br>
+                        <label for="password">Password</label><br>
+                        <input type="password" id="email"  name="password" value="" ><br><br> -->
+                        <input type="submit" value="Create account" name="signup" id="submit">
+                    </form>
+                    <form action="" method="POST" id="signin_form" name='signin'>
+                        {% csrf_token %}
+                        {{ form2 }}
+                        <!-- <label for="name">Name</label><br>
+                        <input type="text" id="name" name="username" value="" ><br><br>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" value="" ><br><br>
+                        <label for="password">Password</label><br>
+                        <input type="password" id="email"  name="password" value="" ><br><br> -->
+                        <input type="submit" value="Log in" name="signup" id="submit">
+                    </form>
+                    <div id="login_forget_cont">
+                        <div id="signin_btn">Log in</div>
+                        <div id="forget_pass">Forget password ?</div>
+                    </div>
+                </div>
+                <div id="login_cont_p1_3">
+                    <div id="login_copyright">RadChatAI LTD © 202200</div>
+                </div>
+            </div>
+            <div id="login_cont_p2">
+                <div id="welcome">Welcome to RadChatAI !</div>
+                <img src="{% static 'img/landing.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>
